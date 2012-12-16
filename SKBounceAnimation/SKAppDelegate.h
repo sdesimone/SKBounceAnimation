@@ -12,8 +12,8 @@
 
 @interface SKAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (retain, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) SKRootViewController *viewController;
+@property (retain, nonatomic) SKRootViewController *viewController;
 
 @end

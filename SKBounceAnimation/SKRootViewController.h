@@ -17,7 +17,7 @@
 
 @interface SKRootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *bounceDemos;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) NSArray *bounceDemos;
 
 @end

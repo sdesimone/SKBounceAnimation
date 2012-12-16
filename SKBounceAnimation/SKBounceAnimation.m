@@ -52,6 +52,22 @@
  
  */
 
+static CGPathRef createPathFromXYValues(NSArray *xValues, NSArray *yValues) {
+	NSUInteger numberOfPoints = xValues.count;
+	CGMutablePathRef path = CGPathCreateMutable();
+	CGPoint value;
+	value = CGPointMake([[xValues objectAtIndex:0] floatValue], [[yValues objectAtIndex:0] floatValue]);
+	CGPathMoveToPoint(path, NULL, value.x, value.y);
+	
+	for (int i = 1; i < numberOfPoints; i++) {
+		value = CGPointMake([[xValues objectAtIndex:i] floatValue], [[yValues objectAtIndex:i] floatValue]);
+		CGPathAddLineToPoint(path, NULL, value.x, value.y);
+	}
+	return path;
+}
+
+
+
 @interface SKBounceAnimation (Private)
 
 - (void) createValueArray;
@@ -256,20 +272,6 @@
 		[values addObject:[NSValue valueWithCGRect:value]];
 	}
 	return values;
-}
-
-static CGPathRef createPathFromXYValues(NSArray *xValues, NSArray *yValues) {
-	NSUInteger numberOfPoints = xValues.count;
-	CGMutablePathRef path = CGPathCreateMutable();
-	CGPoint value;
-	value = CGPointMake([[xValues objectAtIndex:0] floatValue], [[yValues objectAtIndex:0] floatValue]);
-	CGPathMoveToPoint(path, NULL, value.x, value.y);
-	
-	for (int i = 1; i < numberOfPoints; i++) {
-		value = CGPointMake([[xValues objectAtIndex:i] floatValue], [[yValues objectAtIndex:i] floatValue]);
-		CGPathAddLineToPoint(path, NULL, value.x, value.y);
-	}
-	return path;
 }
 
 - (NSArray*) createTransformArrayFromM11:(NSArray*)m11 M12:(NSArray*)m12 M13:(NSArray*)m13 M14:(NSArray*)m14

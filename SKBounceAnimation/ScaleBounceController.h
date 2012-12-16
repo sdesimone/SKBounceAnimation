@@ -11,6 +11,6 @@
 
 @interface ScaleBounceController : UIViewController
 
-@property (nonatomic, strong) UIView *bouncingView;
+@property (nonatomic, retain) UIView *bouncingView;
 
 @end
