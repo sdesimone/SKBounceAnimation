@@ -76,19 +76,15 @@ static CGPathRef createPathFromXYValues(NSArray *xValues, NSArray *yValues) {
 - (NSArray*) createRectArrayFromXValues:(NSArray*)xValues yValues:(NSArray*)yValues widths:(NSArray*)widths heights:(NSArray*)heights;
 - (NSArray*) createColorArrayFromRed:(NSArray*)redValues green:(NSArray*)greenValues blue:(NSArray*)blueValues alpha:(NSArray*)alphaValues;
 - (NSArray*) createTransformArrayFromM11:(NSArray*)m11 M12:(NSArray*)m12 M13:(NSArray*)m13 M14:(NSArray*)m14
-							  M21:(NSArray*)m21 M22:(NSArray*)m22 M23:(NSArray*)m23 M14:(NSArray*)m24
-							  M31:(NSArray*)m31 M32:(NSArray*)m32 M33:(NSArray*)m33 M14:(NSArray*)m34
-							  M41:(NSArray*)m41 M42:(NSArray*)m42 M43:(NSArray*)m43 M14:(NSArray*)m44;
+							  M21:(NSArray*)m21 M22:(NSArray*)m22 M23:(NSArray*)m23 M24:(NSArray*)m24
+							  M31:(NSArray*)m31 M32:(NSArray*)m32 M33:(NSArray*)m33 M34:(NSArray*)m34
+							  M41:(NSArray*)m41 M42:(NSArray*)m42 M43:(NSArray*)m43 M44:(NSArray*)m44;
 
 @end
 
 @implementation SKBounceAnimation
 
 @synthesize fromValue, byValue, toValue, numberOfBounces, shouldOvershoot;
-
-+ (SKBounceAnimation*) animationWithKeyPath:(NSString*)keyPath {
-	return [[self alloc] initWithKeyPath:keyPath];
-}
 
 - (id) initWithKeyPath:(NSString*)keyPath {
 	self = [super init];
@@ -98,6 +94,10 @@ static CGPathRef createPathFromXYValues(NSArray *xValues, NSArray *yValues) {
 		self.shouldOvershoot = YES;
 	}
 	return self;
+}
+
++ (SKBounceAnimation*) animationWithKeyPath:(NSString*)keyPath {
+	return [[self alloc] initWithKeyPath:keyPath];
 }
 
 - (void) setFromValue:(id)newFromValue {
